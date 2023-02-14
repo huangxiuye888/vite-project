@@ -5,7 +5,12 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: '/',
     component: async () => await import('../layout/index.vue'),
-    children: []
+    children: [
+      {
+        path: '',
+        component: async () => await import('../views/design/index.vue'),
+      },
+    ]
   }
 ]
 

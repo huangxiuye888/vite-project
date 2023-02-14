@@ -16,5 +16,7 @@
     </SketchRule>
   </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { right } from '@/views/right'
+</script>
 <style scoped></style>
