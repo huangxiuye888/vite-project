@@ -6,7 +6,10 @@ const routes: RouteRecordRaw[] = [
     name: '/',
     redirect: '/home',
     component: () => import('@/layout/index.vue'),
-    children: [{ path: '/home', name: 'home', component: () => import('@/views/home/index.vue') }]
+    children: [{
+      path: '/home', name: 'home',
+      component: () => import('@/views/home/index.vue')
+    }]
   },
   {
     path: '/design',
