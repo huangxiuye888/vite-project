@@ -5,17 +5,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed } from 'vue'
 const props = defineProps<{
-  name: string,
-  className:string
+  name: string
+  className: string
 }>()
-const iconName = computed(() => `#icon-${props.name}`);
+const iconName = computed(() => `#icon-${props.name}`)
 const svgClass = computed(() => {
-  if (props.className) return `svg-icon ${props.className}`;
-  return "svg-icon";
-});
-
+  if (props.className) return `svg-icon ${props.className}`
+  return 'svg-icon'
+})
 </script>
 
 <style scoped>
