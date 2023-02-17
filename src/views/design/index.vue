@@ -38,16 +38,11 @@
       <div class="layout-center-top"></div>
       <div class="layout-center-context">
         <div class="card">
-          <SketchRule
-            :thick="20"
-            :scale="2"
-            :width="x"
-            :height="y"
-            :startX="0"
-            :startY="0"
-            :shadow="1"
-          >
+          <SketchRule :thick="20" :scale="2" :width="x" :height="y" :startX="0" :startY="0">
           </SketchRule>
+          <div @drop="widgetOnDragged($event)" @dragover="dragOver($event)">
+            <widget />
+          </div>
         </div>
       </div>
     </div>
@@ -57,6 +52,7 @@
 <script setup lang="ts">
 import { reactive, toRefs } from 'vue'
 import { useContainerSize } from '@/hooks/useContainerSize'
+import widget from './components/widget.vue'
 const state = reactive({
   widgetTools: [
     {
@@ -117,10 +113,13 @@ const dragStart = (widgetCode: string) => {
   console.log(widgetCode)
 }
 const dragEnd = () => {}
-// const dragOver = (evt) => {
-//   evt.preventDefault()
-//   evt.stopPropagation()
-// }
+const dragOver = (evt: { preventDefault: () => void; stopPropagation: () => void }) => {
+  evt.preventDefault()
+  evt.stopPropagation()
+}
+const widgetOnDragged = (evt: any) => {
+  console.log(evt)
+}
 
 const { widgetTools, list } = toRefs(state)
 </script>
@@ -159,11 +158,9 @@ const { widgetTools, list } = toRefs(state)
     flex-direction: column;
     &-top {
       height: 50px;
-      background-color: yellow;
     }
     &-context {
       flex: 1;
-      background-color: green;
       .card {
         width: 100%;
         height: 100%;
@@ -175,7 +172,6 @@ const { widgetTools, list } = toRefs(state)
   &-right {
     width: 200px;
     height: 100%;
-    background-color: blue;
   }
 }
 </style>

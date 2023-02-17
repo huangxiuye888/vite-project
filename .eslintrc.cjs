@@ -8,9 +8,10 @@ module.exports = {
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    parser: '@typescript-eslint/parser'
   },
-  plugins: ['vue'],
+  plugins: ['vue', '@typescript-eslint'],
   rules: {
     'vue/multi-word-component-names': 'off'
   }
