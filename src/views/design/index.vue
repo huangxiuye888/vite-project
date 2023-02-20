@@ -46,13 +46,16 @@
         </div>
       </div>
     </div>
-    <div class="layout-right"></div>
+    <div class="layout-right">
+      <Right></Right>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import { reactive, toRefs } from 'vue'
 import { useContainerSize } from '@/hooks/useContainerSize'
 import widget from './components/widget.vue'
+import Right from '@/views/right/index.vue'
 const state = reactive({
   widgetTools: [
     {
@@ -170,7 +173,7 @@ const { widgetTools, list } = toRefs(state)
     }
   }
   &-right {
-    width: 200px;
+    width: 300px;
     height: 100%;
   }
 }
