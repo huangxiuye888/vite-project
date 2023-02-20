@@ -18,11 +18,21 @@
     @drag-end="print('drag-end')"
     @resize-end="print('resize-end')"
   >
-    测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字
+    <component :is="type" :value="value" />
   </Vue3DraggableResizable>
 </template>
 <script lang="ts" setup>
 import { reactive, toRefs } from 'vue'
+const props = defineProps({
+  type: {
+    type: String,
+    default: ''
+  },
+  value: {
+    type: Object,
+    default: () => {}
+  }
+})
 const state = reactive({
   x: 100,
   y: 100,
@@ -34,4 +44,5 @@ const print = (val: any) => {
   console.log(val)
 }
 const { x, y, h, w, active } = toRefs(state)
+const { type, value } = toRefs(props)
 </script>
